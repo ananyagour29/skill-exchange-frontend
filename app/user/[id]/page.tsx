@@ -394,7 +394,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 interface User {
   id: number;
   name: string;
@@ -444,12 +444,18 @@ export default function UserProfilePage() {
           profileResponse,
           skillsResponse,
           ratingsResponse,
+        // ] = await Promise.all([
+        //   fetch(`http://localhost:8080/getUserById/${userId}`),
+        //   fetch(`http://localhost:8080/api/profile/${userId}`),
+        //   fetch(`http://localhost:8080/api/skills/user/${userId}`),
+        //   fetch(`http://localhost:8080/api/ratings/user/${userId}`),
+        // ]);
         ] = await Promise.all([
-          fetch(`http://localhost:8080/getUserById/${userId}`),
-          fetch(`http://localhost:8080/api/profile/${userId}`),
-          fetch(`http://localhost:8080/api/skills/user/${userId}`),
-          fetch(`http://localhost:8080/api/ratings/user/${userId}`),
-        ]);
+  fetch(`${API_URL}/getUserById/${userId}`),
+  fetch(`${API_URL}/api/profile/${userId}`),
+  fetch(`${API_URL}/api/skills/user/${userId}`),
+  fetch(`${API_URL}/api/ratings/user/${userId}`),
+]);
 
         if (userResponse.ok) {
           const userData = await userResponse.json();
