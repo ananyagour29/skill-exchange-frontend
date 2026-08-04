@@ -7,7 +7,6 @@ const api = axios.create({
   },
 });
 
-
 // Add JWT token automatically for protected APIs
 api.interceptors.request.use(
   (config) => {

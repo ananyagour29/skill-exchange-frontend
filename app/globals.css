@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #F8F4EF;
-  --foreground: #2D2D2D;
+  --background: #FFFFFF;
+  --foreground: #0F172A;
 }
-
 
 * {
   box-sizing: border-box;
 }
-
 
 html,
 body {
@@ -19,9 +19,16 @@ body {
   min-height: 100%;
 }
 
-
+/* Updated body styles with dark mode support */
 body {
-  background: #F8F4EF;
-  color: #2D2D2D;
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Switches background and text color when .dark is active */
+html.dark body {
+  background-color: #030712;
+  color: #FFFFFF;
 }
