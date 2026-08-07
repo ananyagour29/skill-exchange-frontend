@@ -17,7 +17,6 @@ import {
   LuBookMarked,
   LuArrowLeft,
   LuRefreshCw,
-  LuMail,
   LuRepeat,
   LuSend,
   LuLayers,
@@ -84,7 +83,7 @@ export default function UserProfilePage() {
       } catch (err) {
         console.error("Error fetching user details:", err);
         if (isMounted) setError("Failed to load profile details.");
-      } {
+      } finally {
         if (isMounted) setLoading(false);
       }
     };
@@ -98,7 +97,6 @@ export default function UserProfilePage() {
 
   const displayName =
     userData?.name || userData?.fullName || userData?.user?.name || "Community Member";
-  const email = userData?.email || userData?.user?.email || "No email provided";
   const bio = userData?.bio || userData?.about || "No bio description provided yet.";
 
   const teachingCount = skills.filter(
@@ -114,18 +112,18 @@ export default function UserProfilePage() {
   ).length;
 
   // Direct Exchange Navigation
-const handleInitiateExchange = (skill: any) => {
-  const query = new URLSearchParams();
+  const handleInitiateExchange = (skill: any) => {
+    const query = new URLSearchParams();
 
-  // User who will receive the request
-  query.set("providerId", userId);
+    // User who will receive the request
+    query.set("providerId", userId);
 
-  // Optional skill details
-  query.set("skillId", String(skill.id));
-  query.set("skillName", skill.skillName || skill.name);
+    // Optional skill details
+    query.set("skillId", String(skill.id));
+    query.set("skillName", skill.skillName || skill.name);
 
-  router.push(`/exchanges?${query.toString()}`);
-};
+    router.push(`/exchanges?${query.toString()}`);
+  };
 
   return (
     <ProtectedRoute>
@@ -146,7 +144,7 @@ const handleInitiateExchange = (skill: any) => {
           <div className="flex items-center justify-between">
             <button
               onClick={() => router.back()}
-              className="group inline-flex items-center gap-2.5 text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-200"
+              className="group inline-flex items-center gap-2.5 text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-200 cursor-pointer"
             >
               <div className="p-2 rounded-full bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-sm group-hover:-translate-x-1 transition-transform backdrop-blur-md">
                 <LuArrowLeft className="text-sm" />
@@ -202,10 +200,6 @@ const handleInitiateExchange = (skill: any) => {
                         </span>
                       </div>
                     </div>
-
-                    <p className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">
-                      <LuMail className="text-indigo-500 shrink-0 text-base" /> {email}
-                    </p>
 
                     <p className="text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed font-normal pt-1">
                       {bio}
@@ -326,9 +320,8 @@ const handleInitiateExchange = (skill: any) => {
                         {/* Card Footer with Aesthetic Gradient Button */}
                         <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-end">
                           <button
-                            // onClick={() => handleInitiateExchange(s.skillName || s.name)}
                             onClick={() => handleInitiateExchange(s)}
-                            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-teal-500 hover:from-indigo-600 hover:to-teal-600 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/30 transition-all duration-200 active:scale-95 shrink-0"
+                            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-teal-500 hover:from-indigo-600 hover:to-teal-600 text-white px-4 py-2.5 text-xs font-bold shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/30 transition-all duration-200 active:scale-95 shrink-0 cursor-pointer"
                           >
                             <LuSend className="text-xs" /> Send Request
                           </button>

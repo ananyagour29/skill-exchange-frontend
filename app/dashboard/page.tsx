@@ -210,9 +210,12 @@ export default function DashboardPage() {
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-600 dark:text-teal-400 text-xs font-bold tracking-wide uppercase mb-4">
                   <LuSparkles /> Dashboard & Marketplace
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                {/* <h1 className="text-4xl sm:text-4xl font-extrabold tracking-tight">
                   Welcome back, <span className="text-teal-700 dark:text-teal-400">{profile?.name || profile?.fullName || user?.name || "Member"}</span>
-                </h1>
+                </h1> */}
+<h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] py-2">
+    Welcome back, <span className="font-normal text-teal-700 dark:text-teal-400">{profile?.name || profile?.fullName || user?.name || "Member"}</span>
+  </h1>
                 <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl text-base sm:text-lg leading-relaxed">
                   Connect with peer mentors, explore offered skills, or manage your learning profile.
                 </p>

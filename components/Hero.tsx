@@ -194,7 +194,7 @@ export default function Hero() {
                 Skill Exchange is a community-driven platform connecting people to learn, teach, and grow together without money.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+<div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
                 <Link
                   href="/register"
                   className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-teal-600 hover:bg-teal-500 dark:bg-teal-600 dark:hover:bg-teal-500 px-6 py-3.5 font-semibold text-white shadow-md shadow-teal-600/20 transition hover:shadow-teal-600/30 text-sm sm:text-base"
@@ -202,12 +202,12 @@ export default function Hero() {
                   Register Now <FiArrowRight />
                 </Link>
 
-                <a 
-                  href="#skill-checker" 
+                <Link 
+                  href="/login" 
                   className="w-full sm:w-auto flex items-center justify-center rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-3.5 font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/80 transition shadow-sm text-sm sm:text-base"
                 >
-                  Check Skill Availability
-                </a>
+                  Login
+                </Link>
               </div>
 
               {/* Platform Statistics Section */}
