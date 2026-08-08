@@ -1,3 +1,4 @@
+
 import api from "./api";
 import { Skill, SkillType } from "./skillService";
 
@@ -10,7 +11,8 @@ const searchService = {
   searchSkills: async (
     params: SearchParams
   ): Promise<Skill[]> => {
-    const response = await api.get("/api/skills/search", {
+    // '/api' hata diya hai kyunki yeh baseURL mein pehle se attached hota hai
+    const response = await api.get("/skills/search", {
       params,
     });
 

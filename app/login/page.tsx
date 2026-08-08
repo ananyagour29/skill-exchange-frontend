@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -37,7 +36,10 @@ export default function LoginPage() {
 
       console.log("Login Response:", response.data);
 
+      // Save user identifiers for filtering and state checks
       localStorage.setItem("userId", String(response.data.id));
+      localStorage.setItem("currentUserId", String(response.data.id)); // Added for SearchPage filter fallback
+      localStorage.setItem("currentUserEmail", String(response.data.email)); // Added for SearchPage filter fallback
 
       localStorage.setItem("user", JSON.stringify({
         id: response.data.id,
@@ -98,15 +100,14 @@ export default function LoginPage() {
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60">
               <LuZap className="text-sm text-emerald-600 dark:text-emerald-400" /> Teach Your Expertise
-
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-50 dark:bg-cyan-950/50 text-cyan-700 dark:text-cyan-300 border border-cyan-200/60 dark:border-cyan-800/60">
-              <LuShieldCheck className="text-sm text-cyan-600 dark:text-cyan-400" />  Build Connections
+              <LuShieldCheck className="text-sm text-cyan-600 dark:text-cyan-400" /> Build Connections
             </span>
           </div>
         </div>
 
-        {/* Login Card Form - Taller Box with comfortable padding */}
+        {/* Login Card Form */}
         <div className="rounded-3xl border border-teal-100/90 dark:border-teal-900/50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl p-8 sm:p-10 shadow-2xl space-y-6">
 
           {error && (
